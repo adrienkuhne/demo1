@@ -1,0 +1,11 @@
+---
+output: github_document
+---
+# Monte Carlo Integration
+Explain what your package is doing here
+
+# Installation
+```{r, eval=FALSE}
+devtools::install_github("")
+```
+
