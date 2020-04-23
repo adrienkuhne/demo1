@@ -1,4 +1,4 @@
-#' @title Simple Monte-Carlo integration
+#' @title Simple Monte Carlo integration
 #'
 #' @description Compute an approximation of the integral of the function f(x)
 #' with respect to dx in the range [a, b] by Monte-Carlo integration using
@@ -70,15 +70,14 @@ mc_int = function(x_range, fun, B, seed = 1291){
 }
 
 #' @title Plot for Monte-Carlo integration function
-#' #'
+#'
 #' @description Plot something
-#' #' @param A \code{list} of the class MCI
-#' #' @author Stephane Guerrier
-#' #' @export
-#' #' @examples
-#' #' obj = mc_int(x_range = c(0,1), fun = "x^2", B = 10^5)
-#' #' plot(obj)
-
+#' @param A \code{list} of the class MCI
+#' @author Stephane Guerrier
+#' @export
+#' @examples
+#' obj = mc_int(x_range = c(0,1), fun = "x^2", B = 10^5)
+#' plot(obj)
 plot.MCI = function(x, ...){
   obj = x
   x_range = obj$x_range
@@ -97,12 +96,14 @@ plot.MCI = function(x, ...){
   f_x = eval(parse(text = fun))
   cols = hcl(h = seq(15, 375, length = 3), l = 65, c = 100, alpha = 0.4)[1:3]
   polygon(c(x, rev(x)), c(rep(0, length(x)), rev(f_x)),
-          border = NA, col = cols[1])
+          border = NA, col = cols[2])
   abline(v = x_range[1], lty = 2)
   abline(v = x_range[2], lty = 2)
 }
-#' @export(MC_gui = function(){(  appDir = system.file("MC_int", package = "demo")(  shiny::runApp(appDir, display.mode = "normal")(})
 
 
-obj = mc_int(x_range = c(0,1), fun = "x^2*sin(x^2/pi)", B = 10^3)
-plot(obj)
+#' @export
+MC_gui = function(){
+  appDir = system.file("MC_int", package = "demo1")
+  shiny::runApp(appDir, display.mode = "normal")
+}
